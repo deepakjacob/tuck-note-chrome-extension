@@ -23,7 +23,7 @@ const injectExtensionToDOM = (
   element: RootElement,
   selector: ContainerSelector
 ) => {
-  const rootElementId = "root";
+  const rootElementId = "tuck-note-root";
 
   const appContainer = document.createElement("div");
   appContainer.id = rootElementId;

@@ -1,5 +1,4 @@
 
-// import "./App.css";
 
 // IMPORTANT: use the asset service module to incluse assets like
 // images in your app. Find the usage below
@@ -8,6 +7,7 @@
 // import logo from "./logo.svg";
 // AssetsService.getResourceURL(logo)
 import Frame, { FrameContextConsumer }from 'react-frame-component';
+import "./xmain.css";
 
 interface XMainProps {
   document?: Document;
@@ -17,7 +17,6 @@ interface XMainProps {
 const XMain = (props: XMainProps)=> (
   <div>this is XMain component</div>
 )
-
 
 const App = () => {
   return (
