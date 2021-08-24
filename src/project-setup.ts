@@ -2,6 +2,13 @@ import ReactDOM, { Renderer } from "react-dom";
 
 import { checkIsExtension } from "./services/environment-service";
 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if( request.message === "activate_tuck_note_side_bar") {
+     console.log("activate tuck note sidebar received @ ", new Date())
+     toggle();
+  }
+});
+
 type RootElement = Parameters<Renderer>["0"][0];
 type ContainerSelector = string;
 
@@ -19,14 +26,15 @@ const renderAppToDOM = (element: RootElement, selector: ContainerSelector) => {
   ReactDOM.render(element, document.querySelector(selector));
 };
 
+const rootElementId = "tuck-note-root";
+
 const injectExtensionToDOM = (
   element: RootElement,
   selector: ContainerSelector
 ) => {
-  const rootElementId = "tuck-note-root";
-
   const appContainer = document.createElement("div");
   appContainer.id = rootElementId;
+  appContainer.style.display = "none";
 
   const elementInDOM = findElementInDOM(selector);
 
@@ -35,6 +43,16 @@ const injectExtensionToDOM = (
     renderAppToDOM(element, `#${rootElementId}`);
   }
 };
+
+
+const toggle = () => {
+  const rootElement = findElementInDOM(`#${rootElementId}`) as HTMLDivElement;
+  if(rootElement?.style?.display === "none"){
+    rootElement.style.display = "block";
+  }else{
+    rootElement.style.display = "none";
+  }
+}
 
 const initExtension = (element: RootElement, selector: ContainerSelector) => {
   const interval = setInterval(() => {

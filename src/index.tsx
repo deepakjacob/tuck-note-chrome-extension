@@ -17,14 +17,6 @@ setupProject({
 });
 
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-     if( request.message === "activate_tuck_note_side_bar") {
-        console.log("activate tuck note sidebar received @ ", new Date())
-     }
-  }
-);
-
-
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

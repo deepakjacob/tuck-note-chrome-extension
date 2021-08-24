@@ -6,6 +6,8 @@
 // import * as AssetsService from "./services/assets-service";
 // import logo from "./logo.svg";
 // AssetsService.getResourceURL(logo)
+
+
 import Frame, { FrameContextConsumer }from 'react-frame-component';
 import "./xmain.css";
 
@@ -32,3 +34,4 @@ const App = () => {
 }
 
 export default App;
+
