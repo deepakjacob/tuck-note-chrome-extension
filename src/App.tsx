@@ -13,6 +13,7 @@ interface XMainProps {
   window?: Window;
   isExtension: boolean;
 }
+
 const XMain = (props: XMainProps) => {
   const { document, window } = props;
   return (
@@ -23,6 +24,7 @@ const XMain = (props: XMainProps) => {
     </div>
   );
 };
+
 const App = () => {
   return (
     <Frame

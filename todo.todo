@@ -1,0 +1,13 @@
+TODO
+
+☐ chrome & chrome specific user messages have to be decorated with the typescript types
+☐ analytics from the plugin - where to capture
+☐ vscode, safari and firefox plugins
+☐ electron application    
+☐ latex format support
+
+☐ themeing support - themes should be based on the background and foreground of the host page
+☐ user customization of themes and settings
+
+
+
