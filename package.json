@@ -11,8 +11,8 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build:extension": "INLINE_RUNTIME_CHUNK=false REACT_APP_BUILD_TARGET=extension react-app-rewired build",
-    "build:web-app": "INLINE_RUNTIME_CHUNK=false REACT_APP_BUILD_TARGET=web-app react-app-rewired build",
+    "build:extension": "GENERATE_SOURCEMAP=false INLINE_RUNTIME_CHUNK=false REACT_APP_BUILD_TARGET=extension react-app-rewired build",
+    "build:web-app": "GENERATE_SOURCEMAP=false INLINE_RUNTIME_CHUNK=false REACT_APP_BUILD_TARGET=web-app react-app-rewired build",
     "test": "react-app-rewired test"
   },
   "eslintConfig": {
