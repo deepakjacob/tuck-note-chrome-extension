@@ -1,17 +1,29 @@
 import ReactDOM, { Renderer } from 'react-dom';
-
 import { checkIsExtension } from './services/environment-service';
+import { ChromeRequest, MessageType } from './types';
 
+const findElementInDOM = (selector: ContainerSelector) => {
+  return document.querySelector(selector);
+};
+
+const rootElementId = 'tuck-note-root';
+
+const toggle = () => {
+  const rootElement = findElementInDOM(
+    `#${rootElementId}`,
+  ) as HTMLDivElement;
+  if (rootElement?.style?.display === 'none') {
+    rootElement.style.display = 'block';
+  } else {
+    rootElement.style.display = 'none';
+  }
+};
+
+// TODO move this to someother chrome specific files
 chrome.runtime.onMessage.addListener(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (request, sender, sendResponse) => {
-    if (request.message === 'activate_tuck_note_side_bar') {
-      // eslint-disable-next-line no-console
-      console.log(
-        'activate tuck note sidebar received @ ',
-        new Date(),
-      );
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  (request: ChromeRequest, sender: any, sendResponse: any) => {
+    if (request.message === MessageType.ACTIVATE_SIDE_BAR) {
       toggle();
     }
   },
@@ -26,18 +38,12 @@ interface AppSetupConfig {
   injectWebAppTo: ContainerSelector;
 }
 
-const findElementInDOM = (selector: ContainerSelector) => {
-  return document.querySelector(selector);
-};
-
 const renderAppToDOM = (
   element: RootElement,
   selector: ContainerSelector,
 ) => {
   ReactDOM.render(element, document.querySelector(selector));
 };
-
-const rootElementId = 'tuck-note-root';
 
 const injectExtensionToDOM = (
   element: RootElement,
@@ -52,17 +58,6 @@ const injectExtensionToDOM = (
   if (elementInDOM) {
     elementInDOM.append(appContainer);
     renderAppToDOM(element, `#${rootElementId}`);
-  }
-};
-
-const toggle = () => {
-  const rootElement = findElementInDOM(
-    `#${rootElementId}`,
-  ) as HTMLDivElement;
-  if (rootElement?.style?.display === 'none') {
-    rootElement.style.display = 'block';
-  } else {
-    rootElement.style.display = 'none';
   }
 };
 
