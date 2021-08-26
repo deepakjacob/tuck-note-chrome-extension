@@ -8,6 +8,9 @@ TODO
 
 ☐ themeing support - themes should be based on the background and foreground of the host page
 ☐ user customization of themes and settings
+☐ Group (Chrome Group functionality) all the pages with the extension open (again based on config)
+☐ save work asynchronously and synchronously (config option - while former is the defaut choice)
+☐ Make this extension available in VSCode as well
 
 
 
