@@ -2,6 +2,7 @@ import Button from '@material-ui/core/Button';
 import { Provider, useDispatch } from 'react-redux';
 import { getSelectedNote } from '../store/actions/note';
 import configureStore from '../store/configureStore';
+
 const store = configureStore();
 
 const ContentView = () => {
