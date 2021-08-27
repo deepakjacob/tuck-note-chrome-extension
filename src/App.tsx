@@ -6,6 +6,7 @@
 // AssetsService.getResourceURL(logo)
 
 import Frame, { FrameContextConsumer } from 'react-frame-component';
+import View from './components/View';
 import './xmain.css';
 
 interface XMainProps {
@@ -21,6 +22,7 @@ const XMain = (props: XMainProps) => {
       <div>this is XMain component</div>
       <div>${document?.baseURI}</div>
       <div>${window?.isSecureContext}</div>
+      <View />
     </div>
   );
 };
@@ -33,7 +35,9 @@ const App = () => {
           key="key"
           type="text/css"
           rel="stylesheet"
-          href={chrome.runtime.getURL('/static/css/content.css')}
+          href={window.chrome?.runtime?.getURL(
+            '/static/css/content.css',
+          )}
         ></link>,
       ]}
     >
