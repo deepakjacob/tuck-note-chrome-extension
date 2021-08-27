@@ -20,7 +20,7 @@ const toggle = () => {
 };
 
 // TODO move this to someother chrome specific files
-chrome.runtime.onMessage.addListener(
+window?.chrome?.runtime?.onMessage.addListener(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (request: ChromeRequest, sender: any, sendResponse: any) => {
     if (request.message === MessageType.ACTIVATE_SIDE_BAR) {

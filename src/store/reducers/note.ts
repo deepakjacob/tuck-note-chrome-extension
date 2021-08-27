@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { FluxStandardAction } from 'redux-promise-middleware';
-import { SET_NOTE_IN_FOCUS } from '../actions/note';
+import { GET_SELECTED_NOTE } from '../actions/note';
 
 enum NoteType {
   TEXT = 'text',
@@ -9,12 +9,10 @@ enum NoteType {
   RICHTEXT = 'richtext',
 }
 
-export type NoteIdType = string;
-
 // TODO: move out of this file
 interface Note {
   // id will be undefined for a newly created note
-  id?: NoteIdType;
+  id?: string;
   title: string;
   content: string;
   createdTimestamp: number;
@@ -25,32 +23,36 @@ interface Note {
   lastModifiedBy?: string;
 }
 
+type NoteCache = {
+  [key: string]: Note;
+};
+
 export interface NoteState {
-  selectedNote?: string;
-  // only note id's and title to be fetched
-  // to reduce load & improve performance
-  allNotes?: string[];
+  selectedNote?: Note;
   // cache of fetched notes
   // this will contain all notes attributes
-  fetchedNotes?: Note[];
+  noteCache: NoteCache;
 }
 
-export interface NoteState {
-  focussedNote?: Note;
-  focussedNoteId?: NoteIdType;
-}
-
-const defaultState: NoteState = {};
+const defaultState: NoteState = {
+  selectedNote: undefined,
+  noteCache: {},
+};
 
 const note: Reducer<NoteState, FluxStandardAction> = (
   state: NoteState = defaultState,
   action: FluxStandardAction,
 ) => {
   switch (action.type) {
-    case SET_NOTE_IN_FOCUS:
+    case GET_SELECTED_NOTE:
+      const { selectedNote } = action.payload;
+      const { id } = selectedNote;
       return {
-        focussedNote: action.payload?.selectedNote,
-        focussedNoteId: action.payload?.selectedNote.id,
+        selectedNote: selectedNote as Note,
+        noteCache: {
+          [id]: selectedNote,
+          ...state.noteCache,
+        },
       };
 
     default:
