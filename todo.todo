@@ -1,13 +1,25 @@
 TODO
 
-☐ chrome & chrome specific user messages have to be decorated with the typescript types
+Done:
+✔ chrome & chrome specific user messages have to be decorated with the typescript types @done(21-08-27 10:04)
+✔ get material-ui theming correct @today @ui @done(21-08-27 15:47)
+
+Immediate:
+☐ google sign-in @high
+☐ draft js editing support @high
+☐ latex format support @low 
+☐ user customization of themes and settings @low
+☐ tag cloud @high
+☐ search @high
+
+Medium Term:
+☐ presentation mode for the notes @high
 ☐ analytics from the plugin - where to capture
 ☐ vscode, safari and firefox plugins
 ☐ electron application    
-☐ latex format support
 
+Not MVP:
 ☐ themeing support - themes should be based on the background and foreground of the host page
-☐ user customization of themes and settings
 ☐ Group (Chrome Group functionality) all the pages with the extension open (again based on config)
 ☐ save work asynchronously and synchronously (config option - while former is the defaut choice)
 ☐ Make this extension available in VSCode as well
