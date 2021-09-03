@@ -43,9 +43,6 @@ const XMain = (props: XMainProps) => {
   const { document, window } = props;
   return (
     <div>
-      <div>this is XMain component</div>
-      <div>${document?.baseURI}</div>
-      <div>${window?.navigator.appName}</div>
       <View />
     </div>
   );
@@ -79,7 +76,12 @@ const CustomHead = () => {
 
 const FramedApp = ({ children, ...props }: any) => {
   return (
-    <Frame frameBorder={0} {...props} head={<CustomHead />}>
+    <Frame
+      style={{ width: '100vw', height: '100vh' }}
+      frameBorder={0}
+      {...props}
+      head={<CustomHead />}
+    >
       <FrameContextConsumer>
         {({ document, window }) => {
           const jss = create({
