@@ -86,7 +86,7 @@ const FramedApp = ({ children, ...props }: any) => {
         {({ document, window }) => {
           const jss = create({
             plugins: [...jssPreset().plugins],
-            insertionPoint: document.head,
+            insertionPoint: document?.head,
           });
           return (
             <StylesProvider jss={jss}>
